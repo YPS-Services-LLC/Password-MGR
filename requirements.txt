@@ -1,0 +1,4 @@
+cryptography
+pyotp
+psutil
+protobuf
