@@ -27,8 +27,8 @@ Password & 2FA manager with vault encryption, Wayland clipboard, ydotool typing 
 ### Get Login + 2FA Codes
 <img src="screenshots/get-2fa.png" width="600"/>
 
-### Update an Entry
-<img src="screenshots/update.png" width="600"/>
+### Get&Add Username&Password 
+<img src="screenshots/update1.png" width="600"/>
 
 ### Map 2FA Between Accounts
 <img src="screenshots/map-2fa.png" width="600"/>
