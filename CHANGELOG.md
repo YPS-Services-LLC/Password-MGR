@@ -1,16 +1,20 @@
+# Password MGR — Changelog
+
 ## [2.1] — 2025-10-08
-### Added
-- AES‑256 vault with Argon2id key derivation.
-- TOTP helper (`pmgr otp`) and improved CLI UX.
-- Clipboard watchdog with configurable timeout.
+- Unified YPS header and standardized README format
+- Upgraded AES-256-GCM encryption and PBKDF2 iterations (310 000)
+- Added 2FA TOTP support and auto-clipboard expiry
+- Hardened checksum and salt rotation mechanism
+- Updated integration hooks for Sys-Snapshots and Opsec Hardener
 
-### Changed
-- Standardized README with YPS branding and badges.
-- Safer defaults for clipboard copy operations.
+## [2.0] — 2025-05-17
+- Initial multi-platform release (Fedora/Ubuntu)
+- Introduced config and vault file structure
+- Implemented interactive CLI menu for credential management
 
-### Fixed
-- Edge case on empty vault initialization.
+---
 
-### Future
-- Minimal GTK frontend.
-- Optional secure sync (pull‑only) for enterprise.
+© 2025 YPS Services LLC — B20250292295  
+California Registered Entity  
+https://yps.services   ✉ contact@yps.services  
+AUS +61 3 8907 8593  |  USA +1 (213) 528-8185

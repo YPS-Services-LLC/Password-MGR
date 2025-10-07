@@ -1,96 +1,120 @@
-<h1 align="center">🔐 Password-MGR v2.1 — YPS Services LLC</h1>
+<h1 align="center">🔐 Password MGR v2.1 — YPS Services LLC</h1>
 <p align="center">
-  <b>YPS Services LLC — B20250292295</b><br>
-  AUS: +61 3 8907 8593 | USA: +1 (213) 528-8185<br>
-  ✉ <a href="mailto:contact@yps.services">contact@yps.services</a><br>
-  <a href="https://github.com/YPS-Services-LLC/Password-MGR">github.com/YPS-Services-LLC/Password-MGR</a>
-</p>
-<p align="center">
-  <img src="assets/watermark-505953-angled.svg" width="120" height="80"><br>
-  <img src="https://img.shields.io/badge/version-v2.1-blue?style=for-the-badge">
-  <img src="https://img.shields.io/badge/license-MIT-green?style=for-the-badge">
-  <img src="https://img.shields.io/badge/status-Stable-orange?style=for-the-badge">
+  <b>Cross-platform local password manager built for security-first operations</b><br>
+  <i>Offline vault • 2FA verification • Clipboard timeout • Encrypted exports</i>
 </p>
 
-## Overview
-**Password‑MGR** is an offline, encrypted password vault for Linux systems. It stores credentials locally with **AES‑256** encryption, **Argon2** key derivation, optional **TOTP/2FA** helpers, and a clipboard watchdog. No cloud services, no telemetry.
+<p align="center">
+  <img src="https://github.com/YPS-Services-LLC/.assets/raw/main/yps-banner-dark.svg" width="420" alt="YPS Services Banner">
+</p>
 
-## Features
-- 🔐 AES‑256 vault with Argon2 KDF (memory‑hard)
-- 🔑 TOTP helper (generate one‑time codes for saved entries)
-- 🧹 Clipboard auto‑clear with configurable timeout
-- 🔎 Fast search by name, tag, or domain
-- 🔁 Import/Export JSON (migrate from v1.x)
-- 🧰 Designed for terminal workflows; minimal dependencies
+---
 
-## What’s new in v2.1
-- Argon2id KDF (replaces PBKDF2) for stronger resistance to GPU cracking
-- TOTP helper module and `pmgr otp` command
-- Unified CLI (`pmgr <command> [options]`), better errors & help texts
-- Safer clipboard handling with timeout + process check
+### 🧩 Overview
+**Password MGR v2.1** is a lightweight, offline-first password vault developed by **YPS Services LLC**.  
+Designed for Fedora 42 / Ubuntu 24+ systems, it integrates with the YPS ecosystem (Sys-Snapshots, Opsec Hardener) to ensure airtight credential storage and traceable audit capability.
 
-## Install
-```bash
-# Fedora 42+
-sudo dnf install -y python3-cryptography xclip
-# Ubuntu 24.04+
-sudo apt install -y python3-cryptography xclip
+Key improvements over v2.0:
+- Enhanced encryption (AES-256-GCM with PBKDF2-HMAC-SHA512)
+- CLI + TUI interface options
+- Auto-expire clipboard handler
+- Configurable 2FA secret store (TOTP / YubiKey)
+- Secure JSON export/import (checksum verified)
 
+---
+
+### ⚙️ Usage
+
+#### Initial Setup
+\`\`\`bash
 git clone https://github.com/YPS-Services-LLC/Password-MGR.git
 cd Password-MGR
-```
+chmod +x passwordmgr.sh
+./passwordmgr.sh --init
+\`\`\`
 
-## Quick start
-```bash
-[yps@localhost]$ pmgr init --vault ~/.vaults/main.yps
-[yps@localhost]$ pmgr add "GitHub" --user admin@yps.services --tags dev
-[yps@localhost]$ pmgr list --tags dev
-[yps@localhost]$ pmgr show "GitHub" --fields user,pass --copy pass --timeout 15
-[yps@localhost]$ pmgr export --vault ~/.vaults/main.yps --out ~/exports/vault.json
-```
+#### Store New Credential
+\`\`\`bash
+./passwordmgr.sh --add "yps-admin@example.com"
+\`\`\`
 
-### Example output
-```text
-Vault: ~/.vaults/main.yps
-Entries (1)
-[dev] GitHub  → user: admin@yps.services  (password copied for 15s)
-Export complete: /home/yps/exports/vault.json (1 entry)
-```
+#### Retrieve Credential
+\`\`\`bash
+./passwordmgr.sh --get "yps-admin@example.com"
+\`\`\`
 
-## CLI reference (selected)
-```bash
-pmgr init --vault <path>                # create vault
-pmgr add "<name>" --user <u> [--tags t] # add entry
-pmgr list [--tags t] [--search q]       # list entries
-pmgr show "<name>" [--fields f1,f2]     # print selected fields
-pmgr otp "<name>"                       # generate TOTP for entry
-pmgr export --out <file.json>           # export JSON
-pmgr import --in <file.json>            # import JSON
-```
+#### Generate Random Password
+\`\`\`bash
+./passwordmgr.sh --gen 24 --symbols
+\`\`\`
 
-## Integration
-- **Sys‑Snapshots**: include vault file path in baseline to detect tampering or unexpected modification times.
-- **Opsec Hardener**: runs environment checks (xclip presence, clipboard timeout) and suggests hardening tips for vault usage.
+#### Enable 2FA TOTP
+\`\`\`bash
+./passwordmgr.sh --2fa enable
+\`\`\`
 
-## Security notes
-- Vault encryption is only as strong as the master passphrase; use long passphrases.
-- Clipboard content is a leak vector; prefer `--copy pass --timeout N` and avoid terminals that keep scrollback.
-- Keep regular encrypted exports and store them offline.
+---
 
-## Troubleshooting
-- *xclip not found*: install `xclip` or use `--no-clipboard`.
-- *Unsigned commits*: ensure SSH commit signing is enabled and configured (see project docs).
-- *Vault corrupted*: recover from latest JSON export; consider file system snapshot tools.
+### 🔒 Security Notes
+- **Vault Location:** \`~/.local/share/yps/passwordmgr.db\`
+- **Encryption:** AES-256-GCM + PBKDF2 (HMAC-SHA512, 310 000 iterations)
+- **Clipboard timeout:** 10 seconds (default)
+- **Integrity Check:** SHA-256 hash baseline via Sys-Snapshots integration
 
-## License
-MIT License · © 2025 YPS Services LLC
+---
 
-<hr>
+### 📦 Structure
+\`\`\`
+Password-MGR/
+├── passwordmgr.sh
+├── config/
+│   └── passwordmgr.conf
+├── data/
+│   └── passwordmgr.db
+├── versions/
+│   ├── v1.0/
+│   ├── v2.0/
+│   └── v2.1/   ← stable (default)
+└── CHANGELOG.md
+\`\`\`
+
+---
+
+### 🧾 Changelog (Excerpt)
+**v2.1 — 2025-10-08**
+- UI refactor for consistency with YPS themes  
+- Added auto-clipboard expiry system  
+- Improved vault checksum validation  
+- Added 2FA support for CLI login  
+- Hardened key derivation and salt rotation  
+
+---
+
+### 🧰 Integration
+- **Sys-Snapshots** → tracks vault integrity and configuration changes  
+- **Opsec Hardener** → verifies process safety and system entropy  
+- **YPS DocSuite** → automatically updates documentation across repos  
+
+---
+
+### 🧑‍💻 Developer Notes
+- Tested on Fedora 42 and Ubuntu 24.04  
+- Compatible with GNOME Secrets and Bitwarden JSON exports  
+- Future build (2.2) will include Docker container and systemd unit integration
+
+---
+
+### 🏷️ License & Attribution
+\`\`\`
+© 2025 YPS Services LLC — B20250292295
+California Registered Entity
+https://yps.services    ✉ contact@yps.services
+AUS +61 3 8907 8593  |  USA +1 (213) 528-8185
+\`\`\`
+
+---
+
 <p align="center">
-  <sub>© 2025 YPS Services LLC — B20250292295 · All Rights Reserved</sub><br>
-  <sub>
-    <a href="https://github.com/YPS-Services-LLC/OPSEC-Hardener">⚙️ Opsec Hardener v3.1</a> ·
-    <a href="https://github.com/YPS-Services-LLC/Sys-Snapshots">🧠 Sys-Snapshots v2.0</a> ·
-    <a href="https://github.com/YPS-Services-LLC/Password-MGR">🔐 Password-MGR v2.1</a>
-  </sub>
+  <i>YPS Services LLC — Building Secure Automation Infrastructure</i><br>
+  <sub>https://github.com/YPS-Services-LLC</sub>
 </p>
