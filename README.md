@@ -1,84 +1,24 @@
+<h1 align="center">🧠 Password-MGR v2.1 — YPS Services LLC</h1>
+<p align="center"><b>YPS Services LLC — B20250292295</b><br>
+AUS: +61 3 8907 8593 | USA: +1 (213) 528-8185<br>
+✉ <a href="mailto:contact@yps.services">contact@yps.services</a><br>
+<a href="https://github.com/YPS-Services-LLC/Password-MGR">github.com/YPS-Services-LLC/Password-MGR</a></p>
 
-# 🔐 Passmgr (v3.0.0 Final — Fedora Wayland Edition)
+<p align="center">
+  <img src="assets/watermark-505953-angled.svg" width="120" height="80"><br>
+  <img src="https://img.shields.io/badge/version-v2.1-blue?style=for-the-badge">
+  <img src="https://img.shields.io/badge/license-MIT-green?style=for-the-badge">
+  <img src="https://img.shields.io/badge/status-Stable-orange?style=for-the-badge">
+</p>
 
-Password & 2FA manager with vault encryption, Wayland clipboard, ydotool typing support, and Google Authenticator migration import.
+### Overview
+This repository is part of the YPS Software Family providing secure, automated tools.
 
----
-
-## 🚀 Features
-- Encrypted vault (PBKDF2 + Fernet)
-- 2FA (TOTP) support
-- Import `otpauth-migration://` URIs (Google Authenticator export)
-- Map 2FA secrets between entries (`map-2fa`)
-- Wayland clipboard copy / auto-paste via `wl-copy` + `ydotool`
-- Backup/restore resilience
-- Licence verification system
-
----
-
-## 📸 Screenshots
-
-### Vault Unlock & Verification
-<img src="screenshots/unlock.png" width="600"/>
-
-
-### Get&Add Username&Password 
-<img src="screenshots/update1.png" width="600"/>
-
-
-### Get Login + 2FA Codes
-<img src="screenshots/get-2fa.png" width="600"/>
-
-
-### Map 2FA Between Accounts
-<img src="screenshots/map-2fa.png" width="600"/>
-
-
-### Import Google Authenticator Accounts
-<img src="screenshots/import-2fa.png" width="600"/>
-
+### Project Family
+- [⚙️ Opsec Hardener v3.1](https://github.com/YPS-Services-LLC/OPSEC-Hardener)
+- [🧠 Sys-Snapshots v2.0](https://github.com/YPS-Services-LLC/Sys-Snapshots)
+- [🔐 Password MGR v2.1](https://github.com/YPS-Services-LLC/Password-MGR)
 
 ---
 
-## 🛠 Installation
-
-```bash
-git clone https://github.com/YOUR-USER/passmgr.git
-cd passmgr
-chmod +x setup.sh
-./setup.sh
-```
-
----
-
-## 📦 Usage
-
-Run with:
-
-```bash
-sudo python passmgr.py
-```
-
-Available commands:
-```
-add, get, type, gen, update, show, list, search,
-delete, recent, quit, import-2fa, map-2fa
-```
-
----
-
-## 🌐 Example
-
-```bash
-Command: import-2fa
-Paste otpauth-migration:// URI: <pasted from Authenticator export>
-
----
-
-## 🤖 GitHub Actions CI
-
-Every push will auto-test the script loads with:
-
-```bash
-python passmgr.py --help
-```
+<p align="center"><sub>© 2025 YPS Services LLC — All Rights Reserved</sub></p>
