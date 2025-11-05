@@ -1,8 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+
 <title>Password Manager v3.1 — README Preview</title>
 <style>
   :root{--bg:#0b0f10;--fg:#eafcff;--muted:#9fb3c8;--accent:#00ffcc;--accent2:#00eaff;--border:#123}
