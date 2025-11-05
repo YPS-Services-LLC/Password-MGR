@@ -1,6 +1,37 @@
-<div class="wrap">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Password Manager v3.1 — README Preview</title>
+<style>
+  :root{--bg:#0b0f10;--fg:#eafcff;--muted:#9fb3c8;--accent:#00ffcc;--accent2:#00eaff;--border:#123}
+  html,body{margin:0;background:#000;color:var(--fg);font-family:Inter,system-ui,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif}
+  .wrap{max-width:980px;margin:0 auto;padding:32px 18px 80px}
+  header{text-align:center;margin:22px 0 10px}
+  header img{width:88px;height:auto;filter:drop-shadow(0 0 14px rgba(0,238,255,.25))}
+  h1{font-size:28px;margin:8px 0 4px;letter-spacing:.02em}
+  .tag{color:var(--muted);margin:0 0 16px;font-style:italic}
+  .badge{display:inline-block;margin:0 6px 8px;padding:4px 8px;border:1px solid var(--border);border-radius:8px;background:#0a0d0f;font-size:12px;color:#cfe}
+  section{background:var(--bg);border:1px solid var(--border);border-radius:14px;margin:18px 0;padding:18px 18px}
+  h2{font-size:20px;margin:6px 0 8px}
+  h3{font-size:16px;margin:10px 0 6px}
+  p{line-height:1.55;color:#d6eef1}
+  code{background:#071417;border:1px solid #0e2a2d;padding:1px 4px;border-radius:6px;color:#c7fff3}
+  pre{background:#071417;border:1px solid #0e2a2d;border-radius:12px;padding:14px 16px;overflow:auto}
+  pre code{border:none;padding:0;background:transparent;color:#c7fff3}
+  table{width:100%;border-collapse:collapse;background:#071015;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+  th,td{border-bottom:1px solid var(--border);padding:10px 12px;text-align:left;color:#d6eef1}
+  th{background:#0d1318;color:#cfe}
+  tr:last-child td{border-bottom:none}
+  .foot{color:#9fb3c8;font-size:12px;text-align:center;margin-top:32px}
+  .hr{height:1px;background:linear-gradient(90deg,transparent, #0b2730 20%, #0b2730 80%, transparent);margin:22px 0}
+</style>
+</head>
+<body>
+  <div class="wrap">
     <header>
-      <img src="assets/yps_logo.png" alt="YPS">
+      <img src="assets/yps_logo.png" alt="YPS" />
       <h1>🔐 Password Manager v3.1 — YPS Services LLC</h1>
       <p class="tag">Evidence Before Trust.</p>
       <div>
@@ -32,7 +63,7 @@ vault.dat.bak    # rolling backup
 vault.salt       # KDF salt
 device.key       # device secret
 config.json      # defaults (length/charset/modes)</code></pre>
-      <p><strong>Linux Wayland:</strong> <code>wl-copy</code> / <code>wl-paste</code> recommended.<br>
+      <p><strong>Linux Wayland:</strong> <code>wl-copy</code> / <code>wl-paste</code> recommended.<br/>
          <strong>Windows:</strong> Python 3.10+; script includes clipboard fallback.</p>
     </section>
 
@@ -41,7 +72,7 @@ config.json      # defaults (length/charset/modes)</code></pre>
       <pre><code>add, get, type, gen, update, show, list, search,
 delete, recent, restore, verify, about, help, config, quit</code></pre>
       <table>
-        <tbody><tr><th>Command</th><th>Purpose</th><th>Examples</th></tr>
+        <tr><th>Command</th><th>Purpose</th><th>Examples</th></tr>
         <tr><td><code>add</code></td><td>Create a new entry</td><td><code>add</code></td></tr>
         <tr><td><code>get</code></td><td>Copy user/pw/2FA, updates <code>last_viewed</code></td><td><code>get linkedin.com user</code> · <code>get 4 pw</code> · <code>get site 2fa</code></td></tr>
         <tr><td><code>type</code></td><td>Autotype via ydotool</td><td><code>type 3 up</code></td></tr>
@@ -54,7 +85,7 @@ delete, recent, restore, verify, about, help, config, quit</code></pre>
         <tr><td><code>restore</code></td><td>Recover from <code>vault.dat.bak</code></td><td><code>restore</code></td></tr>
         <tr><td><code>verify</code></td><td>Show license status + instance ID</td><td><code>verify</code></td></tr>
         <tr><td><code>config</code></td><td>View or reset defaults</td><td><code>config</code> · <code>config reset</code></td></tr>
-      </tbody></table>
+      </table>
       <h3>Examples</h3>
       <pre><code>get 2fa
 recent
@@ -101,11 +132,13 @@ config reset</code></pre>
       <h2>License and verification</h2>
       <p>Verified builds print:</p>
       <pre><code>[✔] Instance verified: &lt;INSTANCE_ID&gt;  (license OK)</code></pre>
-      <p>Public key verification is handled in‑app.<br>
-         Contact: <strong>support@ypsservicesllc.com</strong><br>
+      <p>Public key verification is handled in‑app.<br/>
+         Contact: <strong>support@ypsservicesllc.com</strong><br/>
          Site: <strong>https://ypsservicesllc.com</strong> (redirects from <strong>yps.services</strong>)</p>
     </section>
 
     <div class="hr"></div>
     <p class="foot">© 2025 YPS Services LLC — Evidence Before Trust.</p>
   </div>
+</body>
+</html>
